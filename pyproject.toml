@@ -1,20 +1,19 @@
 [project]
-name = "vaultwares-mistral"
-version = "0.1.0"
-description = "A Mistral Workflows project"
+name = "flowwer"
+version = "0.2.1"
+description = "Flowwer - A VaultWares Project"
 requires-python = ">=3.12"
 dependencies = [
-    "mistralai-workflows[mistralai]>=3.0.0,<4",
-    "pydantic",
-    "python-dotenv",
+    "fastapi>=0.95.0",
+    "uvicorn>=0.21.0",
+    "python-dotenv>=1.0.0",
+    "pydantic>=1.10.0"
 ]
 
 [dependency-groups]
 dev = [
-    "ruff>=0.11",
     "mypy>=1.15",
-    "pytest>=8.0",
-    "watchdog>=4.0",
+    "pytest>=8.0"
 ]
 
 [tool.uv]
@@ -24,8 +23,5 @@ exclude-newer = "7 days"
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/entrypoints", "src/workflows", "src/examples"]
-
 [tool.hatch.build.targets.wheel.sources]
-"src/worker.py" = "worker.py"
+"worker.py" = "worker.py"
